@@ -25,7 +25,7 @@ Ensure these variables are set in your environment before running the script.
 Run the script using Python:
 
 ```bash
-python script_name.py
+python id-fetcher.py
 ```
 
 ## Functionality
