@@ -5,21 +5,21 @@ import os
 BASE_URL = os.getenv("BASE_URL")
 AUTH_TOKEN = os.getenv("AUTH_TOKEN")
 
-HEADERS = {
-    "Authorization": f"Basic {AUTH_TOKEN}",
-    "Content-Type": "application/json"
-}
+HEADERS = {"Authorization": f"Basic {AUTH_TOKEN}", "Content-Type": "application/json"}
 
 ROWS_PER_PAGE = 1000
 
+
 def fetch_page(page):
     params = {
-        "pagination": json.dumps({
-            "idsOnly": True,
-            "rowsPerPage": ROWS_PER_PAGE,
-            "page": page,
-            "sortBy": "id",
-        })
+        "pagination": json.dumps(
+            {
+                "idsOnly": True,
+                "rowsPerPage": ROWS_PER_PAGE,
+                "page": page,
+                "sortBy": "id",
+            }
+        )
     }
 
     url = f"{BASE_URL}/api/images"
@@ -29,6 +29,7 @@ def fetch_page(page):
         raise Exception(f"Error {response.status_code}: {response.text}")
 
     return response.json()
+
 
 def paginate_through_images():
     page = 1
@@ -56,5 +57,6 @@ def paginate_through_images():
 
     print(f"Total image IDs retrieved: {len(image_ids)}")
     return image_ids
+
 
 image_ids = paginate_through_images()
