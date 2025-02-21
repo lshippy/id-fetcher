@@ -1,4 +1,3 @@
-````markdown
 # Image IDs Pagination Script
 
 ## Overview
